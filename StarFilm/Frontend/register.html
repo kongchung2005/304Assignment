@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	function signup() {
+		var request = new XMLHttpRequest()
+		
+		var name = document.getElementById("name").value
+		var email = document.getElementById("email").value
+		var password = document.getElementById("password").value
+		
+		if(name == ""){
+			alert("Please input name")
+			document.location.href = "register.html"
+		}
+		
+		else if(email == ""){
+			alert("Please input email")
+			document.location.href = "register.html"
+		}
+		
+		else if(password == ""){
+			alert("Please input password")
+			document.location.href = "register.html"
+		}
+		else{
+		
+			var user = JSON.stringify({
+			"name": name,
+			"email": email,
+			"password": password
+			})
+			
+			request.open('POST', 'http://localhost:10888/api/register', false)
+			request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+			request.onreadystatechange = function() {
+				if(request.readyState == 4) {
+				if(request.status == 201) {
+					console.log("successful");
+					alert("Create Account Successful, Please Login at the login page")
+					redirect()
+				} else {
+					console.log("failed");
+					alert("Please Try Again")
+					document.location.href = "register.html"
+				}
+			}
+			};
+			request.send(user)
+		}
+	}
+
+	function redirect() {
+		setTimeout(function() {
+			document.location.href = "login.html"
+		}, 500)
+	}
+	</script>
+</head>
+
+<body>
+	
+	
+		<div class="container vh-100">
+		<div class="row justify-content-center h-100">
+			<div class="card w-25 my-auto shadow">
+				<div class="card-header text-center bg-primary text-white">
+					<h2>Register form</h2>
+				</div>
+				<div class="card-body">
+					<form action="" method="POST">
+					
+						<div class="form-group">
+							<label for="name">Display Name</label>
+							<input type="name" id="name" class="form-control" name="" required="required"/>
+						</div>
+					
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" id="email" class="form-control" name="" required="required"/>
+						</div>
+						
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" id="password" class="form-control" name="" required="required"/>
+						</div>
+						
+						<input type="submit" class="btn btn-primary w-100" value="Register" name="" onclick="this.disabled= true; signup()">
+					</form>
+				</div>
+				<div class="card-footer text-right">
+					<small>Already have an account?<a href="login.html">Sign in</a></small>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+
+</html>

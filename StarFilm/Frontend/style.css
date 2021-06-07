@@ -1,0 +1,116 @@
+div {
+  padding-left: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(51, 51, 51);
+}
+
+li {
+  float: left;
+  font-size: 25px;
+}
+
+li a {
+  
+  display: block;
+  color: white;
+  text-align: right;
+  text-shadow: 1px 1px #ff3c00;
+  padding: 20px 24px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.divFigure { 
+	height: 500px;
+	width: 280px;
+	flex: 0 0 50px; 
+	Float: left;
+	padding: 30px;
+  }
+
+.divFilm { 
+  height: 500px;
+  width: 280px;
+  flex: 0 0 50px; 
+  Float: left;
+  padding: 30px;
+}
+
+input {
+	width: 100%;
+	margin: 5px 0 2px 0;
+}
+
+#Figurelist{
+	display: flex; 
+	flex-direction: column; 
+	flex-wrap: wrap; 
+	height: 120px; 
+	width: 516px; 
+        
+}
+
+
+.loginpage{
+	width: 360px;
+	padding:10% 0 0;
+	margin:auto;
+}
+.form{
+	margin: 0 auto 100px;
+	background:#ffffff;
+	max-width:360px;
+	padding:45px;
+	text-align:center;
+}
+
+.form input{
+	outline:1;
+	background:#f2f2f2;
+	width:100%;
+	border:0;
+	margin:0 0 15px;
+	padding:15px;
+	box-sizing:border-box;
+	font-size:14px;
+}
+
+.form button{
+	text-transform:uppercase;
+	outline:0;
+	background:#4CAF50;
+	width:100%;
+	border:0;
+	padding:15px;
+	color:#FFFFFF;
+	font-size:14px;
+}
+
+.form button:hover,.form button:active{
+  background:#43A047;
+  }
+  .form > .message{
+    margin:15px 0 0;
+    color:aliceblue;
+    font-size:12px;
+  }
+  
+  .form > .message > a{
+    color:#4CAF50;
+    text-decoration:none;
+  }
+  
+  .form .register-form{
+    display:none;
+  }
+

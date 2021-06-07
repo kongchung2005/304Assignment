@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<script type="text/javascript">
+
+function signup() {
+		var request = new XMLHttpRequest()
+		
+		var name = document.getElementById("name").value
+		var email = document.getElementById("email").value
+		var password = document.getElementById("password").value
+		
+		if(name == ""){
+			alert("Please input name")
+			document.location.href = "login.html"
+		}
+		
+		else if(email == ""){
+			alert("Please input email")
+			document.location.href = "login.html"
+		}
+		
+		else if(password == ""){
+			alert("Please input password")
+			document.location.href = "login.html"
+		}
+		else{
+		
+			var user = JSON.stringify({
+			"name": name,
+			"email": email,
+			"password": password
+			})
+			
+			request.open('POST', 'http://localhost:10888/api/register', false)
+			request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+			request.onreadystatechange = function() {
+				if(request.readyState == 4) {
+				if(request.status == 201) {
+					console.log("successful");
+					alert("Create Account Successful, Please Login at the login page")
+					redirect()
+				} else {
+					console.log("failed");
+					alert("Please Try Again")
+					document.location.href = "register.html"
+				}
+			}
+			};
+			request.send(user)
+		}
+	}
+	
+
+	function login() {
+		var request = new XMLHttpRequest()
+		var email = document.getElementById("email").value
+		var password = document.getElementById("password").value
+		
+		if(email == ""){
+			alert("Please input email")
+			document.location.href = "login.html"
+		}
+		
+		else if(password == ""){
+			alert("Please input password")
+			document.location.href = "login.html"
+		}
+		
+		else{
+			var user = JSON.stringify({
+				"email": email,
+				"password": password
+			})
+			request.open('POST', 'http://localhost:10888/api/login', false);
+			request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+			request.onreadystatechange = function() {
+				var responseObject = JSON.parse(this.response);
+				if(responseObject.token){
+					localStorage.setItem('email', email);
+					localStorage.setItem('password', password);
+					localStorage.setItem('id', responseObject.id);
+					localStorage.setItem('token', responseObject.token);
+				}else{
+					console.log("No token received");
+				}
+			};
+			
+			request.send(user);
+			if(request.readyState == 4) {
+				if(request.status == 200) {
+					console.log("successful");
+					redirect();
+				} else {
+					console.log("failed");
+					alert("You enter incorrect email or password")
+					document.location.href = "login.html"
+				}
+			}
+		}
+	}
+
+	function redirect() {
+		setTimeout(function() {
+			document.location.href = "film.html"
+		}, 500)
+	}
+	</script>
+</head>
+
+<body>
+
+	<div class="loginpage">
+		<div class="form">
+		<form class="register-form">
+		<input type="name" id="name" placeholder="User Name"/>
+		<input type="email" id="email" placeholder="email"/>
+		<input type="password" id="password" placeholder="Password"/>
+
+		<button type="submit" value="Register" onclick="this.disabled= true; signup()">Create</button>
+
+		<div class="message">Already Registered?<a href="#">Login</a>
+		</div>
+		</form>
+		
+		<form class="login-form">
+		<input type="text" placeholder="user name"/>
+		<input type="password" placeholder="password"/>
+		<button>Login</button>
+		<div class="message">Not Registered?<a href="#">Register</a></div>
+		</form>
+
+	</div>
+	</div>
+
+	<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+
+	<script>
+	$('.message a').click(function(){
+	$('form').animate({height:"toggle",opacity:"toggle"},"slow");
+	});
+	</script>
+	
+	
+
+	
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Figure Manage</title>
+	<link rel="stylesheet" href="style.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+	
+<script src="figure.js"></script>
+<script type="text/javascript">
+	function logout(){
+		localStorage.clear();
+	}
+
+</script>
+
+
+<body>
+	<div class="header">
+		<h1>Figure Manage System</h1> </div>
+		
+	<ul>
+		<li><a href="figure.html">Manage Figure</a> </li>
+		<li><a href="top.html">Top Selling</a> </li>
+		<li><a href="login.html" onclick="logout()" >Logout</a></li>
+		
+	</ul>
+	<br><br>
+	<div> 
+		<a href="addFigure.html"><button class="btn"><i class="fa fa-plus"></i> add a figure</button></a>
+	</div>
+	<br><br><br><br>
+	<div id="figurelist"><div>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Star Film</title>
+	<link rel="stylesheet" href="style.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+	
+<script src="film.js"></script>
+<script type="text/javascript">
+	function logout(){
+		localStorage.clear();
+	}
+
+</script>
+
+
+<body>
+	<div class="header">
+		<h1>Star Film</h1> 
+	</div>
+	
+	
+	<ul>
+		<li><a href="film.html">HOME</a> </li>
+		<li><a href="top.html">Top Selling</a> </li>
+		<li><a href="login.html" onclick="logout()" >Logout</a></li>
+		
+	</ul>
+
+
+
+	
+	<br><br>
+	<div> 
+		<a href="addFilm.html"><button class="btn"><i class="fa fa-plus"></i> add a film</button></a>
+	</div>
+	<br><br><br><br>
+	<div id="filmlist"><div>
+</body>
+
+</html>
